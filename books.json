@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Buku A",
+    "year": 2010,
+    "author": "John Doe",
+    "summary": "Lorem ipsum dolor sit amet",
+    "publisher": "Dicoding Indonesia",
+    "pageCount": 100,
+    "readPage": 25,
+    "reading": false,
+    "id": "viMPLiuYDkdicL2D0v0FM",
+    "finished": false,
+    "insertedAt": "2024-06-23T15:37:31.685Z",
+    "updatedAt": "2024-06-23T15:37:31.685Z"
+  },
+  {
+    "name": "Buku B",
+    "year": 2011,
+    "author": "Jane Doe",
+    "summary": "Lorem ipsum dolor sit amet",
+    "publisher": "Dicoding Indonesia",
+    "pageCount": 100,
+    "readPage": 100,
+    "reading": false,
+    "id": "4MMJpkKdrVPYWWFtr2WNc",
+    "finished": true,
+    "insertedAt": "2024-06-23T15:37:33.876Z",
+    "updatedAt": "2024-06-23T15:37:56.625Z"
+  }
+]
