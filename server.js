@@ -14,9 +14,10 @@ const readBooksData = () => {
 
 const writeBooksData = (data) => fs.writeFileSync(booksFilePath, JSON.stringify(data, null, 2))
 
-const sendRes = (res, statusCode, response) => {
-  res.writeHead(statusCode, { 'Content-Type': 'application/json' })
-  res.end(JSON.stringify(response))
+const sendRes = (res, statusCode, responses) => {
+  res.writeHead(statusCode, { 'Content-Type': 'application/json; charset=utf-8' })
+
+  res.end(JSON.stringify(responses))
 }
 
 const requestListener = async (req, res) => {
@@ -83,7 +84,7 @@ const requestListener = async (req, res) => {
         books.push(newBook)
         writeBooksData(books)
 
-        sendRes(res, 200, {
+        sendRes(res, 201, {
           status: 'success',
           message: 'Buku berhasil ditambahkan',
           data: { bookId: newBook.id },
