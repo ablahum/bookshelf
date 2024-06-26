@@ -3,20 +3,22 @@ const fs = require('fs')
 const path = require('path')
 const url = require('url')
 
-const booksFilePath = path.join(__dirname, 'books.json')
+const booksFilePath = path.join(__dirname, '../books.js')
 const PORT = 9000
 
 const readBooksData = () => {
-  const data = fs.readFileSync(booksFilePath)
-
-  return JSON.parse(data)
+  delete require.cache[require.resolve(booksFilePath)]
+  const data = require(booksFilePath)
+  return data
 }
 
-const writeBooksData = (data) => fs.writeFileSync(booksFilePath, JSON.stringify(data, null, 2))
+const writeBooksData = (data) => {
+  const dataString = `module.exports = ${JSON.stringify(data, null, 2)};`
+  fs.writeFileSync(booksFilePath, dataString)
+}
 
 const sendRes = (res, statusCode, responses) => {
   res.writeHead(statusCode, { 'Content-Type': 'application/json; charset=utf-8' })
-
   res.end(JSON.stringify(responses))
 }
 
@@ -121,7 +123,7 @@ const requestListener = async (req, res) => {
 
           writeBooksData(books)
           sendRes(res, 200, {
-            tatus: 'success',
+            status: 'success',
             data: { book: books[bookIndex] },
           })
         }
