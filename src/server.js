@@ -110,12 +110,12 @@ const requestListener = async (req, res) => {
         if (!updatedBook.name) {
           sendRes(res, 400, {
             status: 'fail',
-            message: 'Gagal menambahkan buku. Mohon isi nama buku',
+            message: 'Gagal memperbarui buku. Mohon isi nama buku',
           })
         } else if (updatedBook.readPage > updatedBook.pageCount) {
           sendRes(res, 400, {
             status: 'fail',
-            message: 'Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount',
+            message: 'Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount',
           })
         } else {
           books[bookIndex] = { ...books[bookIndex], ...updatedBook, updatedAt: new Date().toISOString() }
@@ -124,7 +124,7 @@ const requestListener = async (req, res) => {
           writeBooksData(books)
           sendRes(res, 200, {
             status: 'success',
-            data: { book: books[bookIndex] },
+            message: 'Buku berhasil diperbarui',
           })
         }
       } else {
